@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: canvas
+  namespace: canvas
+  labels:
+    name: canvas
+spec:
+  type: LoadBalancer
+  selector:
+    name: canvas
+  ports:
+    - name: http
+      port: 7000
+      targetPort: http

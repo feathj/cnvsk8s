@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: canvas-postgres
+  namespace: canvas
+  labels:
+    name: canvas-postgres
+spec:
+  ports:
+    - name: postgres
+      port: 5432
+      targetPort: postgres
+  selector:
+    name: canvas-postgres
