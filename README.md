@@ -1,11 +1,11 @@
 # deploy app
 kubectl create -f canvas-ns.yml
 
-kubectl create -f postgres-svc.yml
-kubectl create -f postgres-deployment.yml
-kubectl create -f canvas-cm.yml
-kubectl create -f canvas-svc.yml
-kubectl create -f canvas-deployment.yml
+kubectl create -f postgres-svc.yml \
+  && kubectl create -f postgres-deployment.yml \
+  && kubectl create -f canvas-cm.yml \
+  && kubectl create -f canvas-svc.yml \
+  && kubectl create -f canvas-deployment.yml
 
 kubectl get pods --namespace=canvas
 

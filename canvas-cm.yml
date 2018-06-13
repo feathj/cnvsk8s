@@ -6,6 +6,13 @@ data:
       encoding: utf8
       database: canvas_production
       host: canvas-postgres
+      user: postgres
+  security.yml: |
+    production:
+      encryption_key: facdd3a131ddd8988b14f6e4e01039c93cfa0160
+  domain.yml: |
+    production:
+      domain: "localhost:3000"
 
 kind: ConfigMap
 metadata:

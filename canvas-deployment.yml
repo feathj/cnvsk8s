@@ -26,29 +26,32 @@ spec:
           value: opt_out
         - name: RAILS_DB_HOST
           value: canvas-postgres
-      #DOMAIN_URL: canvas-web:8443
-      #RAILS_HOST_WITH_PORT: canvas-web:8443
-      #S3_ACCESS_KEY: x
-      #S3_SECRET_KEY: x
 
         ports:
         - name: http
           containerPort: 7000
         volumeMounts:
           - name: config-volume
-            mountPath: /usr/src/app/config
-        livenessProbe:
-          httpGet:
-            path: /health_check
-            port: 7000
-          initialDelaySeconds: 180
-          timeoutSeconds: 15
-        readinessProbe:
-          httpGet:
-            path: /health_check
-            port: 7000
-          initialDelaySeconds: 15
-          timeoutSeconds: 1
+            mountPath: /usr/src/app/config/database.yml
+            subPath: database.yml
+          - name: config-volume
+            mountPath: /usr/src/app/config/security.yml
+            subPath: security.yml
+          - name: config-volume
+            mountPath: /usr/src/app/config/domain.yml
+            subPath: domain.yml
+        #livenessProbe:
+          #httpGet:
+            #path: /health_check
+            #port: 7000
+          #initialDelaySeconds: 180
+          #timeoutSeconds: 15
+        #readinessProbe:
+          #httpGet:
+            #path: /health_check
+            #port: 7000
+          #initialDelaySeconds: 15
+          #timeoutSeconds: 1
       volumes:
         - name: config-volume
           configMap:
