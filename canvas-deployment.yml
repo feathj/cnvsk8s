@@ -2,7 +2,6 @@ apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
   name: canvas
-  namespace: canvas
 spec:
   replicas: 1
   template:
@@ -29,7 +28,7 @@ spec:
 
         ports:
         - name: http
-          containerPort: 7000
+          containerPort: 80
         volumeMounts:
           - name: config-volume
             mountPath: /usr/src/app/config/database.yml
